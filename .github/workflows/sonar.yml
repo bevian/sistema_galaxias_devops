@@ -46,7 +46,7 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       run: |
         ./sonar-scanner/bin/sonar-scanner \
-          -Dsonar.projectKey=8b3cb978eab7120f53bc42d4297416034d0f8385 \
+          -Dsonar.projectKey=603f7d1b7b419e087fb278b09f896f1a909e6b5f \
           -Dsonar.organization=bevian \
           -Dsonar.sources=. \
           -Dsonar.host.url=https://sonarcloud.io \
