@@ -24,6 +24,12 @@ jobs:
       with:
         python-version: '3.x'
 
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'temurin'
+        java-version: '17'
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
@@ -40,8 +46,8 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       run: |
         ./sonar-scanner/bin/sonar-scanner \
-          -Dsonar.projectKey=your_project_key \
-          -Dsonar.organization=your_organization \
+          -Dsonar.projectKey=603f7d1b7b419e087fb278b09f896f1a909e6b5f \
+          -Dsonar.organization=bevian \
           -Dsonar.sources=. \
           -Dsonar.host.url=https://sonarcloud.io \
           -Dsonar.login=${{ secrets.SONAR_TOKEN }}
