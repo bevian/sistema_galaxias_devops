@@ -29,13 +29,19 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
+    - name: Download SonarScanner
+      run: |
+        wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip
+        unzip sonar-scanner-cli-4.6.2.2472-linux.zip
+        mv sonar-scanner-4.6.2.2472-linux sonar-scanner
+
     - name: Run SonarCloud Scan
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       run: |
-        pip install sonar-scanner-cli
-        sonar-scanner \
-          -Dsonar.projectKey=your_project_key \
-          -Dsonar.organization=your_organization \
+        ./sonar-scanner/bin/sonar-scanner \
+          -Dsonar.projectKey=8b3cb978eab7120f53bc42d4297416034d0f8385 \
+          -Dsonar.organization=bevian \
           -Dsonar.sources=. \
-          -Dsonar.host.url=https://sonarcloud.io
+          -Dsonar.host.url=https://sonarcloud.io \
+          -Dsonar.login=${{ secrets.SONAR_TOKEN }}
